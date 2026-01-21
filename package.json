@@ -1,0 +1,33 @@
+{
+  "name": "rest-api-backend",
+  "version": "1.0.0",
+  "description": "MongoDB Express Node TS REST API",
+  "keywords": [
+    "Daniel",
+    "Pincu"
+  ],
+  "homepage": "https://github.com/DanielPincu/REST-API-Backend#readme",
+  "bugs": {
+    "url": "https://github.com/DanielPincu/REST-API-Backend/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanielPincu/REST-API-Backend.git"
+  },
+  "license": "ISC",
+  "author": "Daniel Pincu",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "cross-env": "^10.1.0",
+    "dotenv-flow": "^4.1.0",
+    "express": "^5.2.1",
+    "joi": "^18.0.2",
+    "mongodb": "^7.0.0",
+    "mongoose": "^9.1.5",
+    "nodemon": "^3.1.11"
+  }
+}
