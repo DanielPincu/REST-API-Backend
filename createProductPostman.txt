@@ -1,0 +1,11 @@
+{
+  "name": "Product #1",
+  "description": "The best",
+  "imageURL": "https://picsum.photos/500/500",
+  "price": 100,
+  "stock": 15,
+  "discount": true,
+  "discountPct": 10,
+  "isHidden": false,
+  "_createdBy": 1
+}

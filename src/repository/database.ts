@@ -19,3 +19,14 @@ export async function connect() {
         console.error('Database connection error:', error);
     }
 }
+
+export async function disconnect() {
+    try {
+        await mongoose.disconnect();
+        console.log('Database disconnected successfully');
+    }
+
+    catch (error) {
+        console.error('Database disconnection error:', error);
+    }
+}

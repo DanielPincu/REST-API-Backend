@@ -1,4 +1,5 @@
 import { Router, Request, Response } from 'express';
+import { createProduct } from './controllers/productController';
 
 const router = Router();
 
@@ -8,4 +9,12 @@ router.get('/welcome', (req: Request, res: Response) => {
     res.send('Hello, World!');
 });
 
+router.post('/products', createProduct);
+
+
+
+
+
 export default router;
+
+

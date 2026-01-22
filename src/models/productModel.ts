@@ -14,4 +14,4 @@ const productSchema = new Schema({
     _createdBy: { type: String, ref: 'User', required: true }
 });
 
-export const ProductModel = model<Product>('Product', productSchema);
+export const productModel = model<Product>('Product', productSchema);
