@@ -1,8 +1,6 @@
 import { Request, Response } from 'express';
 import { productModel } from '../models/productModel';
 import { connect, disconnect } from '../repository/database';
-import { error } from 'console';
-
 
 
 export async function createProduct(req: Request, res: Response): Promise<void> {
@@ -11,10 +9,23 @@ export async function createProduct(req: Request, res: Response): Promise<void> 
        await connect();
        const product = new productModel(data);
        const result = await product.save();
-       res.status(201).json(result);
+       res.status(201).send(result);
    } catch (err) {
-       res.status(500).json({ message: 'Error creating product', error: err });
+       res.status(500).send({ message: 'Error creating product', error: err });
    } finally {
        await disconnect();
    }
 }
+
+export async function getAllProducts(req: Request, res: Response): Promise<void> {
+   try {
+       await connect();
+       const result = await productModel.find({});
+       res.status(200).send(result);
+   } catch (err) {
+       res.status(500).send({ message: 'Error fetching products', error: err });
+   } finally {
+       await disconnect();
+   }
+}
+

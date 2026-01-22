@@ -1,5 +1,5 @@
 import { Router, Request, Response } from 'express';
-import { createProduct } from './controllers/productController';
+import { createProduct, getAllProducts } from './controllers/productController';
 
 const router = Router();
 
@@ -10,6 +10,7 @@ router.get('/welcome', (req: Request, res: Response) => {
 });
 
 router.post('/products', createProduct);
+router.get('/products', getAllProducts);
 
 
 
