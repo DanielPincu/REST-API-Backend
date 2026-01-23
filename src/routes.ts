@@ -6,7 +6,7 @@ import {
     updateProductById, 
     deleteProductById } from './controllers/productController';
 
-import { loginUser, registerUser } from './controllers/authController';
+import { loginUser, registerUser, verifyToken } from './controllers/authController';
 
 const router = Router();
 
@@ -20,11 +20,11 @@ router.get('/welcome', (req: Request, res: Response) => {
 router.post('/user/register', registerUser);
 router.post('/user/login', loginUser);
 
-router.post('/products', createProduct);
+router.post('/products', verifyToken, createProduct);
 router.get('/products', getAllProducts);
 router.get('/products/:id', getProductById);
-router.put('/products/:id', updateProductById);
-router.delete('/products/:id', deleteProductById);
+router.put('/products/:id', verifyToken, updateProductById);
+router.delete('/products/:id', verifyToken, deleteProductById);
 
 
 export default router;

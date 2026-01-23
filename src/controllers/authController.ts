@@ -116,7 +116,22 @@ export async function loginUser(req: Request, res: Response) {
   }
 };
 
-    
+//Midleware to verify token
+export function verifyToken(req: Request, res: Response, next: NextFunction) {
+  const token = req.header("auth-token");
+  if (!token) return res.status(400).json({ error: "Bad request!" });
+
+  try {
+    if (token) {
+        jwt.verify(token, process.env.TOKEN_SECRET as string);
+        next();
+    }
+  } catch (error) {
+    res.status(401).json({ error: "Unauthorized, invalid token!" });
+  }
+}   
+
+
 
 
 
