@@ -75,3 +75,28 @@ export async function updateProductById(req: Request, res: Response): Promise<vo
        await disconnect();
    }
 }
+
+
+export async function deleteProductById(req: Request, res: Response): Promise<void> {
+   try {
+       await connect();
+       const id = req.params.id;
+
+       const result = await productModel.findByIdAndDelete(id);
+
+       if (!result) {
+           res.status(404).send({ message: 'Cannot delete product' });
+           return;
+       }
+
+       res.status(200).send({ message: 'Product deleted successfully' });
+   } catch (err: any) {
+       if (err.name === 'CastError') {
+           res.status(400).send({ message: 'Invalid product ID format' });
+       } else {
+           res.status(500).send({ message: 'Error deleting product', error: err });
+       }
+   } finally {
+       await disconnect();
+   }
+}
