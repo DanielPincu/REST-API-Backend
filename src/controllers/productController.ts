@@ -29,3 +29,15 @@ export async function getAllProducts(req: Request, res: Response): Promise<void>
    }
 }
 
+export async function getProductById(req: Request, res: Response): Promise<void> {
+   try {
+       await connect();
+       const id = req.params.id;
+       const result = await productModel.findById({ _id: id });
+       res.status(200).send(result);
+   } catch (err) {
+       res.status(500).send({ message: 'Error fetching product by ID', error: err });
+   } finally {
+       await disconnect();
+   }
+}
