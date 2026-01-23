@@ -1,5 +1,12 @@
 import { Router, Request, Response } from 'express';
-import { createProduct, getAllProducts, getProductById, updateProductById, deleteProductById } from './controllers/productController';
+import { 
+    createProduct, 
+    getAllProducts, 
+    getProductById, 
+    updateProductById, 
+    deleteProductById } from './controllers/productController';
+
+import { loginUser, registerUser } from './controllers/authController';
 
 const router = Router();
 
@@ -8,6 +15,10 @@ router.get('/welcome', (req: Request, res: Response) => {
     res.status(200);
     res.send('Hello, World!');
 });
+
+
+router.post('/user/register', registerUser);
+router.post('/user/login', loginUser);
 
 router.post('/products', createProduct);
 router.get('/products', getAllProducts);
