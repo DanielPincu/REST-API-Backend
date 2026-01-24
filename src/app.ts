@@ -3,6 +3,7 @@ import dotenfFlow from 'dotenv-flow';
 import routes from './routes';
 import { connect } from './repository/database';
 import cors from 'cors';
+import { setupDocs } from './utils/documentation';
 
 // Load environment variables from .env files
 dotenfFlow.config();
@@ -24,6 +25,8 @@ export function startServer() {
     setupCors();
 
     app.use(express.json());
+
+    setupDocs(app);
     
     app.use('/api', routes);
 
